@@ -9,7 +9,6 @@ app.use(cors({
 }));
 app.use(express.json());
 
-const YOUR_DOMAIN = "https://winrate-simulator.netlify.app";
 
 const stripeSession = async (priceId) => {
   try {
@@ -22,8 +21,8 @@ const stripeSession = async (priceId) => {
           quantity: 1,
         },
       ],
-      success_url: `${YOUR_DOMAIN}/success`,
-      cancel_url: `${YOUR_DOMAIN}/canceled`,
+      success_url: 'https://winrate-simulator.netlify.app/success',
+      cancel_url: 'https://winrate-simulator.netlify.app/canceled',
     });
     return session;
   } catch (e) {
