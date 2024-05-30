@@ -5,11 +5,11 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const app = express();
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: 'https://winrate-simulator.netlify.app',
 }));
 app.use(express.json());
 
-const YOUR_DOMAIN = 'http://localhost:3000';
+const YOUR_DOMAIN = "https://winrate-simulator.netlify.app";
 
 const stripeSession = async (priceId) => {
   try {
@@ -31,7 +31,7 @@ const stripeSession = async (priceId) => {
   }
 };
 
-app.post('/api/v1/create-subscription-checkout-session', async (req, res) => {
+app.post('/create-subscription-checkout-session', async (req, res) => {
   try {
     const { plan } = req.body;
     const session = await stripeSession(plan);
