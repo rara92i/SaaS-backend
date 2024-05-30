@@ -9,7 +9,7 @@ app.use(cors({
 }));
 app.use(express.json());
 
-
+const port = process.env.PORT || 4242;
 const stripeSession = async (priceId) => {
   try {
     const session = await stripe.checkout.sessions.create({
@@ -21,8 +21,8 @@ const stripeSession = async (priceId) => {
           quantity: 1,
         },
       ],
-      success_url: "https://winrate-simulator.netlify.app/success",
-      cancel_url: "https://winrate-simulator.netlify.app/canceled",
+      success_url: process.env.REACT_APP_SUCCESS_URL,
+      cancel_url: process.env.REACT_APP_CANCEL_URL,
     });
     return session;
   } catch (e) {
@@ -40,4 +40,6 @@ app.post('/create-subscription-checkout-session', async (req, res) => {
   }
 });
 
-app.listen(4242, () => console.log('Running on port 4242'));
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
