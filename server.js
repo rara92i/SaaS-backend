@@ -21,8 +21,8 @@ const stripeSession = async (priceId) => {
           quantity: 1,
         },
       ],
-      success_url: 'https://winrate-simulator.netlify.app/success',
-      cancel_url: 'https://winrate-simulator.netlify.app/canceled',
+      success_url: "https://winrate-simulator.netlify.app/success",
+      cancel_url: "https://winrate-simulator.netlify.app/canceled",
     });
     return session;
   } catch (e) {
